@@ -1,0 +1,50 @@
+# robots.txt for https://maniarasan.vercel.app
+# Prepared by Senior Technical SEO Expert & Next.js Developer
+
+# Allow all search engines and AI crawlers
+User-agent: *
+Allow: /
+# Disallow private, administrative, api, and build/test directories
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /staging/
+Disallow: /test/
+Disallow: /drafts/
+Disallow: /_next/
+Disallow: /static/
+
+# Explicitly ensure AI & Search bots can crawl public pages
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap URL definition
+Sitemap: https://maniarasan.vercel.app/sitemap.xml
+Sitemap: https://maniarasan.com/sitemap.xml

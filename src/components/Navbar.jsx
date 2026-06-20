@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import resumePdf from '../assets/cert/mani_portfolio.pdf';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,12 +47,13 @@ const Navbar = () => {
 
         <div className="hidden md:block">
           <a
-            href="https://maniarasan.vercel.app/Resume.pdf"
+            href={resumePdf}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-2.5 rounded-full bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-300 backdrop-blur-md"
+            aria-label="Download Maniarasan's Resume"
+            className="px-6 py-2.5 rounded-full bg-white text-[#ff2a2a] font-black hover:bg-gray-100 shadow-[0_0_15px_rgba(255,255,255,0.4)] transition-all duration-300 backdrop-blur-md"
           >
-            Resume
+            Download Resume
           </a>
         </div>
 
@@ -89,13 +91,14 @@ const Navbar = () => {
           ))}
           <div className="pt-4 pb-2">
             <a
-              href="https://maniarasan.vercel.app/Resume.pdf"
+              href={resumePdf}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
+              aria-label="Download Maniarasan's Resume"
               className="inline-block px-6 py-3 rounded-full bg-white text-[#ff2a2a] font-black hover:bg-black hover:text-white transition-colors w-full text-center shadow-lg"
             >
-              Resume
+              Download Resume
             </a>
           </div>
         </div>

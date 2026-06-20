@@ -28,7 +28,8 @@ const About = () => {
               <div className="w-full aspect-[3/4] overflow-hidden rounded-xl bg-gray-800 border-2 border-transparent">
                 <img
                   src={stackImage}
-                  alt="Maniarasan J"
+                  alt="Portrait of Maniarasan J - AI Engineer and MCA Student"
+                  loading="lazy"
                   className="w-full h-full object-cover object-[center_10%]"
                 />
               </div>
@@ -44,20 +45,23 @@ const About = () => {
         {/* Right Side: Info Content */}
         <div data-aos="fade-left" data-aos-delay="200" className="flex-1 text-white mt-8 md:mt-0 relative z-20">
 
-          <h2 className="text-4xl md:text-5xl font-black text-black mb-4">Hello!</h2>
-          <p className="text-lg font-bold mb-4 leading-relaxed max-w-3xl text-red-50">
-            I'm <span className="text-black text-xl font-black mx-1 tracking-wide uppercase">Maniarasan J</span>, an MCA student at Christ University, Bengaluru, with a background in Computer Science and Data Analytics. I am passionate about leveraging data and AI to build impactful solutions and am open to opportunities across AI/ML, Data Science, Data Engineering, Analytics, and Software Development.
-          </p>
-          <p className="text-lg font-bold mb-8 leading-relaxed max-w-3xl text-red-100">
-            As an AI/ML Engineer Intern at Job Jockey, I worked on an LLM-powered Hiring Assistant, a real-time Voice AI Agent, and internal automation platforms, gaining hands-on experience in AI application development, cloud technologies, and scalable data-driven solutions.
-          </p>
+          <h2 className="text-4xl md:text-5xl font-black text-black mb-4">About Me</h2>
+          <article>
+            <p className="text-lg font-bold mb-4 leading-relaxed max-w-3xl text-red-50">
+              I am <strong className="text-black text-xl font-black mx-1 tracking-wide uppercase">Maniarasan J</strong>, an <strong className="text-black">AI/ML Engineer</strong> and Data Engineer based in Bengaluru, India. I am currently pursuing an MCA at Christ University with a strong focus on <strong className="text-black">Large Language Models (LLMs)</strong>, Applied Artificial Intelligence, and scalable Data Analytics.
+            </p>
+            <p className="text-lg font-bold mb-8 leading-relaxed max-w-3xl text-red-100">
+              Currently working as an <strong className="text-black">AI/ML Engineer Intern at JobJockey</strong>, I specialize in developing end-to-end AI applications including real-time Voice AI Agents, LLM-powered Hiring Assistants, and robust ETL pipelines using <strong className="text-black">Python, FastAPI, Next.js, and Vector Databases</strong>.
+            </p>
+          </article>
 
           {/* Horizontal Tech Icons */}
-          <div className="flex items-center gap-10 mt-6">
+          <nav aria-label="Core Technologies" className="flex items-center gap-10 mt-6">
             <div data-aos="zoom-in" data-aos-delay="300" className="flex flex-col items-center gap-2 group">
               <img
                 src={pythonImg}
-                alt="Python"
+                alt="Python Programming Language"
+                loading="lazy"
                 className="w-16 h-16 md:w-20 md:h-20 object-contain hover:scale-110 transition-transform duration-300 cursor-pointer drop-shadow-2xl"
               />
               <span className="text-white/70 text-xs font-bold uppercase tracking-widest">Python</span>
@@ -65,7 +69,8 @@ const About = () => {
             <div data-aos="zoom-in" data-aos-delay="450" className="flex flex-col items-center gap-2 group">
               <img
                 src={javaImg}
-                alt="Java"
+                alt="Java Programming Language"
+                loading="lazy"
                 className="w-16 h-16 md:w-20 md:h-20 object-contain hover:scale-110 transition-transform duration-300 cursor-pointer drop-shadow-2xl"
               />
               <span className="text-white/70 text-xs font-bold uppercase tracking-widest">Java</span>
@@ -73,7 +78,8 @@ const About = () => {
             <div data-aos="zoom-in" data-aos-delay="600" className="flex flex-col items-center gap-2 group">
               <img
                 src={streamlitImg}
-                alt="Streamlit"
+                alt="Streamlit Framework"
+                loading="lazy"
                 className="w-16 h-16 md:w-20 md:h-20 object-contain hover:scale-110 transition-transform duration-300 cursor-pointer drop-shadow-2xl"
               />
               <span className="text-white/70 text-xs font-bold uppercase tracking-widest">Streamlit</span>
@@ -81,7 +87,8 @@ const About = () => {
             <div data-aos="zoom-in" data-aos-delay="750" className="flex flex-col items-center gap-2 group">
               <img
                 src={sqlImg}
-                alt="SQL"
+                alt="SQL Database Query Language"
+                loading="lazy"
                 className="w-16 h-16 md:w-20 md:h-20 object-contain hover:scale-110 transition-transform duration-300 cursor-pointer drop-shadow-2xl"
               />
               <span className="text-white/70 text-xs font-bold uppercase tracking-widest">SQL</span>
@@ -89,7 +96,8 @@ const About = () => {
             <div data-aos="zoom-in" data-aos-delay="900" className="flex flex-col items-center gap-2 group">
               <img
                 src={excelImg}
-                alt="Excel"
+                alt="Microsoft Excel Data Analysis"
+                loading="lazy"
                 className="w-16 h-16 md:w-20 md:h-20 object-contain hover:scale-110 transition-transform duration-300 cursor-pointer drop-shadow-2xl"
               />
               <span className="text-white/70 text-xs font-bold uppercase tracking-widest">Excel</span>
@@ -97,12 +105,13 @@ const About = () => {
             <div data-aos="zoom-in" data-aos-delay="1050" className="flex flex-col items-center gap-2 group">
               <img
                 src={fastapiImg}
-                alt="FastAPI"
+                alt="FastAPI Framework"
+                loading="lazy"
                 className="w-16 h-16 md:w-20 md:h-20 object-contain hover:scale-110 transition-transform duration-300 cursor-pointer drop-shadow-2xl"
               />
               <span className="text-white/70 text-xs font-bold uppercase tracking-widest">FastAPI</span>
             </div>
-          </div>
+          </nav>
 
           {/* Skills Tags */}
           <div id="skills" className="mt-10 flex flex-wrap gap-2">

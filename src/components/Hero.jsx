@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import heroVideo from '../assets/hero video/hero_video_clear.mp4';
+import resumePdf from '../assets/cert/mani_portfolio.pdf';
 
 const Hero = () => {
   const videoRef = useRef(null);
@@ -56,15 +57,16 @@ const Hero = () => {
           >
             Hi, I'm <br />
             <span className="text-transparent [-webkit-text-stroke:2.5px_white]">Maniarasan J.</span>
+            <span className="sr-only">AI Engineer, Machine Learning Engineer, and Data Engineer</span>
           </h1>
 
-          <p
+          <h2
             data-aos="fade-up"
             data-aos-delay="200"
-            className="text-white text-sm md:text-lg font-semibold mb-8 max-w-md drop-shadow-md"
+            className="text-white text-sm md:text-lg font-semibold mb-8 max-w-xl drop-shadow-md leading-relaxed"
           >
-            MCA Student &amp; AI/ML Engineer — building AI-powered applications, intelligent automation systems, and scalable software solutions.
-          </p>
+            Aspiring <strong className="text-red-400">AI/ML Engineer</strong> &amp; <strong className="text-red-400">Full-Stack Developer</strong>. I build scalable <strong className="text-white">Machine Learning models</strong>, <strong className="text-white">LLM Applications</strong>, and data pipelines using <strong className="text-white">Python, FastAPI, and Next.js</strong>.
+          </h2>
 
           <div
             data-aos="fade-up"
@@ -73,12 +75,23 @@ const Hero = () => {
           >
             <a
               href="#projects"
+              aria-label="View Machine Learning and AI Projects"
               className="px-4 py-2 md:px-6 md:py-2 text-xs md:text-base rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-md"
             >
               View My Projects
             </a>
             <a
+              href={resumePdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download Resume PDF"
+              className="px-4 py-2 md:px-6 md:py-2 text-xs md:text-base rounded-full bg-[#ff2a2a] text-white font-bold hover:bg-red-600 transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(255,42,42,0.5)]"
+            >
+              Download Resume
+            </a>
+            <a
               href="#contact"
+              aria-label="Contact Maniarasan J"
               className="px-4 py-2 md:px-6 md:py-2 text-xs md:text-base rounded-full bg-black/40 border border-white text-white font-semibold hover:bg-black/60 transition-all duration-300 backdrop-blur-md"
             >
               Contact Me
