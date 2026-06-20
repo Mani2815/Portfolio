@@ -1,26 +1,34 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
+import SEO from './components/SEO'
 import Preloader from './components/Preloader'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import About from './components/About'
-import Timeline from './components/Timeline'
-import Services from './components/Services'
-import Certificates from './components/Certificates'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+
+// Lazy-load below-the-fold sections for faster initial paint (LCP/FCP improvement)
+const About = lazy(() => import('./components/About'))
+const Timeline = lazy(() => import('./components/Timeline'))
+const Services = lazy(() => import('./components/Services'))
+const Certificates = lazy(() => import('./components/Certificates'))
+const Contact = lazy(() => import('./components/Contact'))
+const Footer = lazy(() => import('./components/Footer'))
 
 function App() {
   return (
     <>
+      {/* Inject all JSON-LD structured data into <head> */}
+      <SEO />
       <Preloader />
       <Navbar />
       <Hero />
-      <About />
-      <Timeline />
-      <Services />
-      <Certificates />
-      <Contact />
-      <Footer />
+      {/* Suspense wraps lazy-loaded sections — null fallback keeps layout stable */}
+      <Suspense fallback={null}>
+        <About />
+        <Timeline />
+        <Services />
+        <Certificates />
+        <Contact />
+        <Footer />
+      </Suspense>
     </>
   )
 }

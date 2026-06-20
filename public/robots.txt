@@ -1,0 +1,79 @@
+# ═══════════════════════════════════════════════════════════
+# robots.txt — Maniarasan J Portfolio
+# https://maniarasan.vercel.app/robots.txt
+# ═══════════════════════════════════════════════════════════
+
+# ── Standard Search Engine Bots ─────────────────────────────
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# ── AI Search Crawlers ───────────────────────────────────────
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Google AI (Bard / Gemini / AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Common AI / Training Crawlers
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# ── All Other Bots ───────────────────────────────────────────
+User-agent: *
+Allow: /
+Disallow: /src/
+Disallow: /node_modules/
+
+# ── Sitemap Reference ────────────────────────────────────────
+Sitemap: https://maniarasan.vercel.app/sitemap.xml

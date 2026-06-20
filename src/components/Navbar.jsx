@@ -16,6 +16,7 @@ const Navbar = () => {
 
   return (
     <nav
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isOpen
           ? 'bg-[#ff2a2a] py-4'
@@ -26,7 +27,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         <div className="flex items-center">
-          <a href="#" className="text-white text-2xl font-black tracking-tight">
+          <a href="/" aria-label="Maniarasan J - Back to top" className="text-white text-2xl font-black tracking-tight">
             MJ<span className="text-red-500">.</span>
           </a>
         </div>
@@ -58,9 +59,12 @@ const Navbar = () => {
         <div className="md:hidden flex items-center">
           <button
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
             className="text-white focus:outline-none p-2"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               {isOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -72,6 +76,9 @@ const Navbar = () => {
       </div>
 
       <div
+        id="mobile-menu"
+        role="navigation"
+        aria-label="Mobile navigation"
         className={`md:hidden absolute top-full left-0 w-full transition-all duration-300 overflow-hidden ${
           isOpen ? 'max-h-96 py-4 opacity-100 bg-[#ff2a2a] shadow-2xl' : 'max-h-0 opacity-0 bg-transparent'
         }`}
