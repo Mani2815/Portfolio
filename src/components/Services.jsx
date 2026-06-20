@@ -18,7 +18,7 @@ const ProjectCard = ({ number, title, text, tech, links, className, aosDelay, ao
   });
 
   return (
-    <article
+    <div
       ref={ref}
       data-aos={aosType || "fade-up"}
       data-aos-delay={aosDelay}
@@ -71,7 +71,7 @@ const ProjectCard = ({ number, title, text, tech, links, className, aosDelay, ao
           ))}
         </div>
       </div>
-    </article>
+    </div>
   );
 };
 
@@ -86,96 +86,46 @@ const Services = () => {
   const projects = [
     {
       number: "01",
-      title: "JobJockey AI Hiring Platform",
-      text: "Problem: Inefficient hiring processes and unstructured resumes. Results: Developed an end-to-end AI platform that automates resume parsing and candidate ranking, reducing screening time by 60%. Business Impact: Streamlined recruitment for HR teams.",
-      tech: ["Next.js", "Python", "FastAPI", "LLMs", "MongoDB"],
-      links: [{ label: "Confidential", url: "#" }],
+      title: "Crime Prediction & Analysis",
+      text: "Predictive analytics system using ML to forecast crime patterns and perpetrator profiles. Time-series analysis and geospatial modelling to help law enforcement allocate resources efficiently.",
+      tech: ["Python", "Scikit-learn", "Pandas", "Machine Learning", "Geospatial"],
+      links: [{ label: "GitHub", url: "https://github.com/Mani2815/Crime_Prediction" }],
       aosType: "fade-left",
       className: "md:absolute md:top-[10px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-6",
       aosDelay: "100"
     },
     {
       number: "02",
-      title: "Real-Time Voice AI Agent",
-      text: "Problem: High latency in conversational bots. Results: Built an interactive Voice AI agent using WebSockets and advanced NLP, enabling sub-second response times for human-like interactions. Business Impact: Improved user engagement and support automation.",
-      tech: ["Python", "FastAPI", "WebSockets", "NLP", "Speech-to-Text"],
-      links: [{ label: "Confidential", url: "#" }],
+      title: "Reddit ETL Pipeline",
+      text: "Scalable ETL pipeline to extract, transform, and load Reddit data. Automated data collection, cleaning, and storage with efficient DB schemas and data quality checks.",
+      tech: ["Python", "SQL", "APIs", "Data Engineering"],
+      links: [{ label: "GitHub", url: "https://github.com/Mani2815/Social-Media-ETL-Dashboard---Reddit" }],
       aosType: "fade-right",
       className: "md:absolute md:top-[450px] md:left-[5%] lg:left-[10%] -rotate-2 md:-rotate-6",
       aosDelay: "200"
     },
     {
       number: "03",
-      title: "AI Resume Parser & Analyzer",
-      text: "Problem: Manual extraction of candidate skills. Results: Engineered a robust parser utilizing Large Language Models to extract structured entities (Skills, Experience, Education) from diverse PDF formats. Business Impact: 95% accuracy in automated candidate profiling.",
-      tech: ["Python", "LLMs", "PyPDF2", "FastAPI"],
-      links: [{ label: "GitHub", url: "https://github.com/Mani2815" }],
-      aosType: "fade-left",
-      className: "md:absolute md:top-[850px] md:right-[5%] lg:right-[15%] rotate-1 md:rotate-3",
-      aosDelay: "300"
-    },
-    {
-      number: "04",
-      title: "JD Matching System",
-      text: "Problem: Poor alignment between candidate profiles and Job Descriptions. Results: Implemented semantic search and vector embeddings to compute precise match scores, surfacing the top candidates instantly. Business Impact: Boosted quality of hire significantly.",
-      tech: ["Python", "Vector Databases", "Transformers", "Data Engineering"],
-      links: [{ label: "GitHub", url: "https://github.com/Mani2815" }],
-      aosType: "fade-right",
-      className: "md:absolute md:top-[1250px] md:left-[10%] lg:left-[20%] -rotate-1 md:-rotate-3",
-      aosDelay: "400"
-    },
-    {
-      number: "05",
-      title: "Crime Prediction & Analysis",
-      text: "Problem: Reactive law enforcement. Results: Predictive analytics system using ML to forecast crime patterns and perpetrator profiles via geospatial modeling. Business Impact: Enables efficient resource allocation and proactive policing.",
-      tech: ["Python", "Scikit-learn", "Pandas", "Machine Learning", "Geospatial"],
-      links: [{ label: "GitHub", url: "https://github.com/Mani2815/Crime_Prediction" }],
-      aosType: "fade-left",
-      className: "md:absolute md:top-[1650px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-4",
-      aosDelay: "100"
-    },
-    {
-      number: "06",
-      title: "Reddit ETL Pipeline",
-      text: "Problem: Unstructured social data. Results: Scalable ETL pipeline to extract, transform, and load Reddit data with automated cleaning and efficient DB schemas. Business Impact: Delivered actionable analytics dashboards for sentiment tracking.",
-      tech: ["Python", "SQL", "APIs", "Data Engineering"],
-      links: [{ label: "GitHub", url: "https://github.com/Mani2815/Social-Media-ETL-Dashboard---Reddit" }],
-      aosType: "fade-right",
-      className: "md:absolute md:top-[2050px] md:left-[5%] lg:left-[10%] -rotate-2 md:-rotate-4",
-      aosDelay: "200"
-    },
-    {
-      number: "07",
       title: "Civitas — Smart City CMS",
-      text: "Problem: Inefficient civic issue tracking. Results: Full-stack CMS with role-based portals, interactive Leaflet maps, and an AI chatbot for real-time complaint tracking. Business Impact: Centralized city management and improved citizen satisfaction.",
-      tech: ["React", "Vite", "Tailwind", "Leaflet", "FastAPI"],
+      text: "Full-stack Smart City Complaint Management & Analytics System. Role-based portals for citizens, staff, and admins with interactive Leaflet maps, Recharts analytics, AI chatbot, and real-time complaint tracking.",
+      tech: ["React", "Vite", "Tailwind", "Leaflet", "Recharts", "Framer Motion", "FastAPI"],
       links: [
         { label: "Frontend", url: "https://github.com/Mani2815/civitas-frontend" },
         { label: "Backend", url: "https://github.com/Mani2815/civitas-backend" }
       ],
       aosType: "fade-left",
-      className: "md:absolute md:top-[2450px] md:right-[5%] lg:right-[15%] rotate-1 md:rotate-3",
+      className: "md:absolute md:top-[700px] md:right-[5%] lg:right-[15%] rotate-1 md:rotate-3",
       aosDelay: "300"
     },
     {
-      number: "08",
+      number: "04",
       title: "Customer Churn Analysis",
-      text: "Problem: High customer attrition rates. Results: ML churn prediction model with advanced feature engineering to identify at-risk customers with high accuracy. Business Impact: Empowered retention teams with data-driven interventions.",
+      text: "ML churn prediction model with data preprocessing, feature engineering, and model evaluation techniques to achieve high accuracy in identifying at-risk customers.",
       tech: ["Python", "Pandas", "Scikit-learn", "Power BI"],
       links: [{ label: "GitHub", url: "https://github.com/Mani2815/E-Commerce-Customer-Churn-Analysis" }],
       aosType: "fade-right",
-      className: "md:absolute md:top-[2850px] md:left-[15%] lg:left-[25%] -rotate-1 md:-rotate-3",
+      className: "md:absolute md:top-[1050px] md:left-[15%] lg:left-[25%] -rotate-1 md:-rotate-3",
       aosDelay: "400"
-    },
-    {
-      number: "09",
-      title: "Fraud Detection System",
-      text: "Problem: Financial losses due to fraudulent transactions. Results: Built an anomaly detection pipeline processing thousands of transactions using ensemble ML algorithms. Business Impact: Significantly reduced false positives and fraud losses.",
-      tech: ["Python", "Machine Learning", "Data Engineering", "XGBoost"],
-      links: [{ label: "GitHub", url: "https://github.com/Mani2815" }],
-      aosType: "fade-up",
-      className: "md:absolute md:top-[3250px] md:right-[15%] lg:right-[20%] rotate-2 md:rotate-5",
-      aosDelay: "500"
     }
   ];
 
@@ -185,7 +135,7 @@ const Services = () => {
       ref={containerRef}
       className="bg-white pt-24 pb-28 px-6 md:px-12 w-full relative overflow-hidden font-sans bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:80px_80px]"
     >
-      <div className="max-w-6xl mx-auto relative md:h-[3800px]">
+      <div className="max-w-6xl mx-auto relative md:h-[1400px]">
 
         {/* Header */}
         <div data-aos="fade-up" className="md:absolute top-0 left-0 md:w-[450px] z-20 mb-16 md:mb-0">
@@ -202,22 +152,22 @@ const Services = () => {
 
         {/* Desktop SVG Animated Dashed Line */}
         <svg
-          className="hidden md:block absolute top-0 left-0 w-full h-[3800px] pointer-events-none z-0"
-          viewBox="0 0 1000 3800"
+          className="hidden md:block absolute top-0 left-0 w-full h-[1400px] pointer-events-none z-0"
+          viewBox="0 0 1000 1400"
           preserveAspectRatio="none"
         >
           <path
-            d="M 650,200 C 400,300 200,400 300,600 C 400,800 750,750 700,1000 C 650,1250 400,1350 300,1500 C 200,1650 300,1850 500,2000 C 700,2150 800,2300 700,2500 C 600,2700 300,2800 400,3000 C 500,3200 650,3350 600,3500 C 550,3650 400,3700 300,3800"
+            d="M 650,200 C 400,300 200,400 300,600 C 400,800 750,750 700,950 C 650,1150 400,1150 300,1250"
             fill="none" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="8 10"
           />
           <mask id="path-mask">
             <motion.path
-              d="M 650,200 C 400,300 200,400 300,600 C 400,800 750,750 700,1000 C 650,1250 400,1350 300,1500 C 200,1650 300,1850 500,2000 C 700,2150 800,2300 700,2500 C 600,2700 300,2800 400,3000 C 500,3200 650,3350 600,3500 C 550,3650 400,3700 300,3800"
+              d="M 650,200 C 400,300 200,400 300,600 C 400,800 750,750 700,950 C 650,1150 400,1150 300,1250"
               fill="none" stroke="white" strokeWidth="20" style={{ pathLength }}
             />
           </mask>
           <path
-            d="M 650,200 C 400,300 200,400 300,600 C 400,800 750,750 700,1000 C 650,1250 400,1350 300,1500 C 200,1650 300,1850 500,2000 C 700,2150 800,2300 700,2500 C 600,2700 300,2800 400,3000 C 500,3200 650,3350 600,3500 C 550,3650 400,3700 300,3800"
+            d="M 650,200 C 400,300 200,400 300,600 C 400,800 750,750 700,950 C 650,1150 400,1150 300,1250"
             fill="none" stroke="black" strokeWidth="2" strokeDasharray="8 10"
             mask="url(#path-mask)" className="drop-shadow-sm"
           />
@@ -252,8 +202,7 @@ const Services = () => {
             rel="noopener noreferrer"
             data-aos="fade-in"
             data-aos-delay="600"
-            aria-label="View more projects on GitHub"
-            className="hidden md:flex items-center gap-2 absolute top-[3650px] left-[55%] font-['Caveat',cursive] text-3xl text-gray-600 rotate-6 hover:text-[#ff2a2a] transition-colors duration-300"
+            className="hidden md:flex items-center gap-2 absolute top-[1300px] left-[55%] font-['Caveat',cursive] text-3xl text-gray-600 rotate-6 hover:text-[#ff2a2a] transition-colors duration-300"
           >
             More projects on GitHub!
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="-rotate-6 group-hover:translate-x-1 transition-transform">
