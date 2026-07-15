@@ -106,7 +106,7 @@ const About = () => {
 
           {/* Skills Tags */}
           <div id="skills" className="mt-10 flex flex-wrap gap-2">
-            {['AWS', 'FastAPI', 'Docker', 'LLMs', 'SQL', 'Git & Github', 'Excel', 'Python', 'Java', 'Streamlit', 'HTML', 'CSS', 'JavaScript', 'Conversational AI', 'NLP', 'RAG', 'Machine Learning', 'Data Science', 'Data Analytics', 'Database Integration', 'Data Visualization', 'MongoDB', 'Deep Learning', 'Node JS', 'Express JS', 'Next JS', 'Deployment', 'Tableau', 'Power BI', 'Neural Networks', 'Web Development'].map(skill => (
+            {['FastAPI', 'LLM Integration', 'SQL', 'Git & Github', 'Advanced Excel', 'Python', 'Java', 'Streamlit', 'NLP', 'Machine Learning', 'Data Science', 'Data Analytics', 'Database Integration', 'Data Visualization', 'MongoDB', 'Deployment', 'Power BI', 'Neural Networks', 'Web Development', 'AWS (Basics)'].map(skill => (
               <span key={skill} className="px-3 py-1 rounded-full bg-black/20 border border-white/20 text-white text-xs font-bold backdrop-blur-sm hover:bg-black/40 transition-colors">
                 {skill}
               </span>

@@ -1,135 +1,213 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import heroVideo from '../assets/hero video/hero_video_clear.mp4';
+
+const PHRASES = ["MCA Student", "Ex AI/ML Engineer Intern", "B.Sc. Graduate"];
+
+const Typewriter = () => {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+    return false;
+  });
+
+  const [text, setText] = useState(() => {
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return PHRASES[0];
+    }
+    return "";
+  });
+
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const listener = (e) => {
+      setPrefersReducedMotion(e.matches);
+      if (e.matches) {
+        setText(PHRASES[0]);
+      }
+    };
+    mediaQuery.addEventListener('change', listener);
+    return () => mediaQuery.removeEventListener('change', listener);
+  }, []);
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    const currentPhrase = PHRASES[phraseIndex];
+    let timer;
+
+    if (isDeleting) {
+      if (text === "") {
+        const stateTimer = setTimeout(() => {
+          setIsDeleting(false);
+          setPhraseIndex((prev) => (prev + 1) % PHRASES.length);
+        }, 0);
+        return () => clearTimeout(stateTimer);
+      } else {
+        timer = setTimeout(() => {
+          setText(currentPhrase.substring(0, text.length - 1));
+        }, 35);
+      }
+    } else {
+      if (text === currentPhrase) {
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+        }, 1800);
+      } else {
+        timer = setTimeout(() => {
+          setText(currentPhrase.substring(0, text.length + 1));
+        }, 70);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, phraseIndex, prefersReducedMotion]);
+
+  return (
+    <div className="h-16 flex items-center justify-center mb-6 select-none" aria-live="polite">
+      <span className="text-zinc-400 text-2xl md:text-4xl font-semibold tracking-wide">
+        {text}
+      </span>
+      {!prefersReducedMotion && (
+        <motion.span
+          animate={{ opacity: [1, 0, 1] }}
+          transition={{
+            duration: 1.2, // 1.2s total (600ms visible, 600ms invisible)
+            repeat: Infinity,
+            ease: "steps(2, start)",
+          }}
+          className="ml-2 w-[4px] h-[1.1em] bg-zinc-400 inline-block"
+          style={{ verticalAlign: 'middle' }}
+        />
+      )}
+    </div>
+  );
+};
 
 const Hero = () => {
-  const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-
   useEffect(() => {
     AOS.init({ duration: 1000, once: true, easing: 'ease-out' });
   }, []);
 
-  const toggleVideo = (e) => {
-    e.stopPropagation();
-    if (videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play();
-        setIsPlaying(true);
-      } else {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      }
-    }
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1], // Apple/Vercel-inspired ease-out-expo
+      },
+    },
   };
 
   return (
-    <section id="home" className="relative w-full h-screen overflow-hidden bg-black">
-      {/* Background Video */}
-      <video
-        ref={videoRef}
-        playsInline
-        onEnded={() => {
-          setIsPlaying(false);
-          if (videoRef.current) {
-            videoRef.current.currentTime = 0;
-          }
-        }}
-        className="absolute top-0 left-0 w-full h-full object-cover z-0 brightness-125"
-      >
-        <source src={heroVideo} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+    <section id="home" className="relative w-full h-screen overflow-hidden bg-[#030014] flex items-center">
+      {/* Background grids and subtle gradients */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* Soft radial glow centered behind the text content area */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.04)_0%,transparent_60%)]"></div>
+        {/* Refined, low-opacity background grid mesh */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.005)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.005)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+      </div>
 
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/40 z-10"></div>
-
-      {/* Content Container */}
-      <div className="absolute inset-0 z-20 px-6 pb-20 md:pb-[8%] md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row justify-end md:justify-between items-start md:items-end text-left w-full">
-
-        {/* Left Side: Text and Buttons */}
-        <div className="flex flex-col items-start text-left max-w-2xl w-full">
-          <h1
-            data-aos="fade-up"
-            className="text-white text-3xl md:text-5xl font-bold mb-4 tracking-tight"
-          >
-            Hi, I'm <br />
-            <span className="text-transparent [-webkit-text-stroke:2.5px_white]">Maniarasan J.</span>
-          </h1>
-
-          <p
-            data-aos="fade-up"
-            data-aos-delay="200"
-            className="text-white text-sm md:text-lg font-semibold mb-8 max-w-md drop-shadow-md"
-          >
-            MCA Student &amp; AI/ML Engineer — building AI-powered applications, intelligent automation systems, and scalable software solutions.
-          </p>
-
-          <div
-            data-aos="fade-up"
-            data-aos-delay="400"
-            className="flex flex-row flex-wrap items-center gap-3 w-full"
-          >
-            <a
-              href="#projects"
-              className="px-4 py-2 md:px-6 md:py-2 text-xs md:text-base rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-md"
-            >
-              View My Projects
-            </a>
-            <a
-              href="#contact"
-              className="px-4 py-2 md:px-6 md:py-2 text-xs md:text-base rounded-full bg-black/40 border border-white text-white font-semibold hover:bg-black/60 transition-all duration-300 backdrop-blur-md"
-            >
-              Contact Me
-            </a>
-          </div>
-        </div>
-
-        {/* Right Side: Play Video Button */}
-        <div
-          data-aos="zoom-in"
-          data-aos-delay="600"
-          className="mt-8 md:mt-0 flex flex-row md:flex-col items-center gap-2 md:gap-3 cursor-pointer group self-start md:self-auto"
-          onClick={toggleVideo}
+      {/* Main Content Area */}
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex justify-center">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="max-w-[800px] w-full text-center flex flex-col items-center"
         >
-          <div className="w-12 h-12 md:w-20 md:h-20 rounded-full border border-white/30 bg-black/20 backdrop-blur-md flex justify-center items-center group-hover:scale-110 group-hover:bg-[#ff2a2a] transition-all duration-500 shadow-[0_0_30px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_40px_rgba(255,42,42,0.6)]">
-            {!isPlaying ? (
-              <svg className="w-5 h-5 md:w-8 md:h-8 text-white ml-0.5 md:ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            ) : (
-              <svg className="w-5 h-5 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-              </svg>
-            )}
-          </div>
-          <span className="text-white text-[10px] md:text-xs font-bold tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity">
-            {!isPlaying ? "Play Reel" : "Pause"}
-          </span>
-        </div>
+          {/* Heading with Hi + Name */}
+          <motion.h1 variants={itemVariants} className="text-white font-bold tracking-tight mb-4">
+            <span className="block text-white/40 text-xl md:text-2xl font-normal mb-3">
+              Hi, I'm
+            </span>
+            <span className="block text-white text-[clamp(3.5rem,10vw,6.5rem)] leading-[1.1] font-bold tracking-tighter select-none">
+              Maniarasan J
+            </span>
+          </motion.h1>
+
+          {/* Typewriter Animation */}
+          <motion.div variants={itemVariants} className="w-full">
+            <Typewriter />
+          </motion.div>
+
+          {/* Subtitle */}
+          <motion.p
+            variants={itemVariants}
+            className="text-white/60 text-xl md:text-2xl font-normal leading-relaxed mb-12 max-w-[700px]"
+          >
+            Building AI-powered software that automates
+            workflows and solves real-world problems.
+          </motion.p>
+
+          {/* Call to Actions */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full sm:w-auto mb-12"
+          >
+            <motion.a
+              href="#projects"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-8 py-3 rounded-full bg-white text-black font-semibold text-sm md:text-base hover:bg-neutral-200 transition-colors duration-300 text-center shadow-[0_4px_12px_rgba(255,255,255,0.1)]"
+            >
+              View Projects
+            </motion.a>
+            <motion.a
+              href="/Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-8 py-3 rounded-full bg-white/5 border border-white/10 hover:border-white/20 text-white font-semibold text-sm md:text-base hover:bg-white/10 transition-all duration-300 text-center backdrop-blur-md"
+            >
+              Download Resume
+            </motion.a>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Scroll Indicator */}
-      <div
-        data-aos="fade-up"
-        data-aos-delay="800"
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
         className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none"
       >
-        <div className="animate-bounce">
-          <svg
-            className="w-6 h-6 text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="3"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
-        </div>
-      </div>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="flex flex-col items-center gap-1.5 text-white/40 font-mono text-[9px] tracking-[0.2em] uppercase select-none"
+        >
+          <span className="text-sm font-light leading-none">↓</span>
+          <span>Scroll</span>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

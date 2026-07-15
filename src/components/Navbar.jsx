@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +47,7 @@ const Navbar = () => {
 
         <div className="hidden md:block">
           <a
-            href="https://maniarasan.vercel.app/Resume.pdf"
+            href="/Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-2.5 rounded-full bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-300 backdrop-blur-md"
@@ -96,7 +96,7 @@ const Navbar = () => {
           ))}
           <div className="pt-4 pb-2">
             <a
-              href="https://maniarasan.vercel.app/Resume.pdf"
+              href="/Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}

@@ -1,4 +1,3 @@
-import React from 'react';
 
 const Footer = () => {
   return (
@@ -53,7 +52,7 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col gap-1 md:items-end">
-          <a href="https://maniarasan.vercel.app/Resume.pdf" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors underline-offset-4 decoration-1">
+          <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors underline-offset-4 decoration-1">
             Download Resume
           </a>
         </div>
